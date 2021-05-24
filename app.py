@@ -9,15 +9,10 @@ def home():
     return render_template('front.html')
 
 
-# @app.route('/download',methods=['POST'])
-# def download():
-#     instance = instaloader.Instaloader()
+@app.route("/wheel", methods = ['GET', 'POST'])
+def wheel():
     
-#     instance.download_profile(profile_name= request.form.get("username"))
-    
-
-#     return render_template('index.html', prediction_text='Downloaded Successfully')
-
+    return render_template("index.html")
 
 if __name__== "__main__":
     app.run(debug=True)
