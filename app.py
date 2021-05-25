@@ -32,7 +32,11 @@ def wheel():
         "Ishita",
         "Gokul",
         "Prakash",
-        "Elakia"
+        "Elakia",
+        "Divya",
+        "Sharon",
+        "Talha",
+        "Praabindh"
     ]
 
     user_string = ','.join(user_list)
