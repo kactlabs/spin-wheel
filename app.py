@@ -19,36 +19,58 @@ from flask import Flask, request, render_template
 import json
 
 app = Flask(__name__)
+USERS_JSONPATH = "users.json"
 
 @app.route('/')
 def home():
     return render_template('front.html')
 
-@app.route("/wheel", methods = ['GET', 'POST'])
-def wheel():
+# @app.route("/wheel", methods = ['GET', 'POST'])
+# def wheel():
 
-    user_list = [
-        "Ana", 
-        "Vedha",
-        "Ishita",
-        "Gokul",
-        "Prakash",
-        "Elakia",
-        "Divya",
-        "Sharon",
-        "Talha",
-        "Praabindh"
-    ]
+#     user_list = [
+#         "Ana", 
+#         "Vedha",
+#         "Ishita",
+#         "Gokul",
+#         "Prakash",
+#         "Elakia",
+#         "Divya",
+#         "Sharon",
+#         "Talha",
+#         "Praabindh"
+#     ]
 
-    user_string = ','.join(user_list)
+#     user_string = ','.join(user_list)
     
-    return render_template("index.html", user_str = user_string)
+#     return render_template("index.html", user_str = user_string)
+
+
+
+
+app.route('/admin/view',methods=['GET','POST'])
+def get_json():
+
+    json_file = open(USERS_JSONPATH)
+    json_data = json.load(json_file)
+    #print(json_data)
+
+    return json_data
+
 
 
 @app.route("/admin", methods = ['GET'])
 def admin():
     
     return render_template("admin.html")
+
+
+@app.route('/wheel', methods = ['GET', 'POST'])
+def hello():
+    json = get_json()
+    data = json["my_dict"]
+    return render_template('index.html', values=data)
+    
 
 @app.route('/admin/post',methods=['POST'])
 def wheelnames():
@@ -69,7 +91,8 @@ def wheelnames():
         outfile.write(json.dumps(my_dict))
 
     return render_template('admin.html')
-    
+
+
 
 
 
