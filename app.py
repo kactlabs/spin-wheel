@@ -19,6 +19,7 @@ from flask import Flask, request, render_template
 import json
 
 app = Flask(__name__)
+USERS_JSONPATH = "data.json"
 
 @app.route('/')
 def home():
@@ -61,9 +62,8 @@ def admin():
     
     return render_template("admin.html")
 
-@app.route('/admin/post',methods=['POST'])
-
-def get_json(USERS_JSONPATH):
+@app.route('/admin/post',methods=['GET','POST'])
+def get_json():
 
     json_file = open(USERS_JSONPATH)
     json_data = json.load(json_file)
