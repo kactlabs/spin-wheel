@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPIIN WHEEL|Admin</title>
+  <title>SPIN WHEEL|Admin</title>
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -149,10 +149,16 @@
 <body>
   <form action="/admin/post" method="POST">
     <div class="container">
-      <label for="names" class="form-label mt-5">Names For Spin Wheel</label>
-      <textarea class="form-control mb-3 mt-2" name="wheel-names" placeholder="Names" type="text" id="names"
-        rows="5"></textarea>
+      <label for="names" class="form-label mt-5">Add Name to Spin Wheel</label>
+      <input class="form-control mb-3 mt-2" name="wheel-names" placeholder="Names" type="text" id="names">
       <button type="submit" class="btn btn-primary">Push</button>
+    </div>
+  </form>
+  <form action="/admin/flush" method="POST">
+    <div class="container">
+      <label for="names" class="form-label mt-5">Remove All Names</label>
+      <br>
+      <button type="submit" class="btn btn-primary">Flush</button>
     </div>
   </form>
 </body>
