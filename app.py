@@ -62,7 +62,7 @@ def admin():
     
     return render_template("admin.html")
 
-@app.route('/admin/post',methods=['GET','POST'])
+@app.route('/admin/view',methods=['GET','POST'])
 def get_json():
 
     json_file = open(USERS_JSONPATH)
@@ -71,7 +71,8 @@ def get_json():
 
     return json_data
 
-# return render_template('admin.html')
+@app.route('/admin/view',methods=['GET','POST'])
+def get_json():
 
 if __name__== "__main__":
     app.run(debug=True)
