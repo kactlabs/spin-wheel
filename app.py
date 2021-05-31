@@ -19,43 +19,24 @@ from flask import Flask, request, render_template
 import json
 
 app = Flask(__name__)
-USERS_JSONPATH = "users.json"
+# USERS_JSONPATH = "users.json"
 
 @app.route('/')
 def home():
     return render_template('front.html')
 
-# @app.route("/wheel", methods = ['GET', 'POST'])
-# def wheel():
-
-#     user_list = [
-#         "Ana", 
-#         "Vedha",
-#         "Ishita",
-#         "Gokul",
-#         "Prakash",
-#         "Elakia",
-#         "Divya",
-#         "Sharon",
-#         "Talha",
-#         "Praabindh"
-#     ]
-
-#     user_string = ','.join(user_list)
-    
-#     return render_template("index.html", user_str = user_string)
 
 
 
 
-app.route('/admin/view',methods=['GET','POST'])
-def get_json():
+# app.route('/admin/view',methods=['GET','POST'])
+# def get_json():
 
-    json_file = open(USERS_JSONPATH)
-    json_data = json.load(json_file)
-    #print(json_data)
+#     json_file = open(USERS_JSONPATH)
+#     json_data = json.load(json_file)
+#     #print(json_data)
 
-    return json_data
+#     return json_data
 
 
 
@@ -65,11 +46,11 @@ def admin():
     return render_template("admin.html")
 
 
-@app.route('/wheel', methods = ['GET', 'POST'])
-def hello():
-    json = get_json()
-    data = json["my_dict"]
-    return render_template('index.html', values=data)
+# @app.route('/wheel', methods = ['GET', 'POST'])
+# def hello():
+#     json = get_json()
+#     data = json["my_dict"]
+#     return render_template('index.html', values=data)
     
 
 @app.route('/admin/post',methods=['POST'])
@@ -81,6 +62,8 @@ def wheelnames():
     arr = []
     arr = profile_name.splitlines()
 
+
+
     my_dict = dict() 
     for index,value in enumerate(arr):
         my_dict[index] = value
@@ -91,6 +74,40 @@ def wheelnames():
         outfile.write(json.dumps(my_dict))
 
     return render_template('admin.html')
+
+
+@app.route("/wheel", methods = ['GET', 'POST'])
+def wheel():
+
+    # user_list = [
+    #     "Ana", 
+    #     "Vedha",
+    #     "Ishita",
+    #     "Gokul",
+    #     "Prakash",
+    #     "Elakia",
+    #     "Divya",
+    #     "Sharon",
+    #     "Talha",
+    #     "Praabindh"
+    # ]
+
+
+    user_list = []
+    user_name= request.form.get("wheel-names")
+  
+    # with open('users.json') as f:
+    #     user_list = json.load(f)
+
+    user_string = ','.join(user_list)
+    # json = get_json()
+    # data = json["user_string"]
+    # return render_template('index.html', values=data)
+    
+    
+    return render_template("index.html", user_str = user_string)
+
+
 
 
 
