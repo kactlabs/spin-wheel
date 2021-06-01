@@ -62,8 +62,6 @@ def wheelnames():
     arr = []
     arr = profile_name.splitlines()
 
-
-
     my_dict = dict() 
     for index,value in enumerate(arr):
         my_dict[index] = value
@@ -76,8 +74,8 @@ def wheelnames():
     return render_template('admin.html')
 
 
-@app.route("/wheel", methods = ['GET', 'POST'])
-def wheel():
+# @app.route("/wheel", methods = ['GET', 'POST'])
+# def wheel():
 
     # user_list = [
     #     "Ana", 
@@ -93,19 +91,19 @@ def wheel():
     # ]
 
 
-    user_list = []
-    user_name= request.form.get("wheel-names")
+    # user_list = []
+    # user_name= request.form.get("wheel-names")
   
     # with open('users.json') as f:
     #     user_list = json.load(f)
 
-    user_string = ','.join(user_list)
+    # user_string = ','.join(user_list)
     # json = get_json()
     # data = json["user_string"]
     # return render_template('index.html', values=data)
     
     
-    return render_template("index.html", user_str = user_string)
+    # return render_template("index.html", user_str = user_string)
 
 
 
