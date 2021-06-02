@@ -9,12 +9,12 @@ Course work:
 @author: 
     Ana Jessica
     Ishita
+    Talha
 
 Source:
     
 '''
 
-# Import necessary modules
 from flask import Flask, request, render_template
 import json
 
@@ -26,7 +26,7 @@ def home():
     return render_template('front.html')
 
 @app.route('/wheel', methods = ['GET', 'POST'])
-def hello():
+def show_wheel():
     json = get_json()
     data = json["user_data"]
     return render_template('index.html', values=data)
@@ -42,14 +42,35 @@ def get_json():
 
     json_file = open(USERS_JSONPATH)
     json_data = json.load(json_file)
-    #print(json_data)
 
     return json_data
 
+def check_for_tabs(name):
+
+    name = name.replace('\t',' - ')
+    return name
+
+def check_for_newline(all_names):
+
+    splitted_list = all_names.split('\r\n')
+
+    return splitted_list
+
 @app.route('/admin/post',methods=['GET','POST'])
-def add_json():
+def get_new_value():
 
     new_value = request.values.get("wheel-names")
+
+    name_list = check_for_newline(new_value)
+
+    for name in name_list:
+        add_json(name)
+
+    return render_template("admin.html")
+
+def add_json(new_value):
+
+    new_value = check_for_tabs(new_value)
 
     data_dict = get_json()
 
@@ -80,8 +101,6 @@ def add_json():
 
     with open(USERS_JSONPATH, 'w') as outfile:
         json.dump(updated_data_dict, outfile)
-
-    return render_template("admin.html")
 
 @app.route('/admin/flush',methods=['GET','POST'])
 def flush_json():

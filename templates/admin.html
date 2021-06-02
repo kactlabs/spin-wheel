@@ -149,8 +149,9 @@
 <body>
   <form action="/admin/post" method="POST">
     <div class="container">
-      <label for="names" class="form-label mt-5">Add Name to Spin Wheel</label>
-      <input class="form-control mb-3 mt-2" name="wheel-names" placeholder="Names" type="text" id="names">
+      <label for="names" class="form-label mt-5">Add Names to Spin Wheel&nbsp;&nbsp; :</label>
+      <label for="names" class="form-label mt-5">&nbsp;&nbsp;Seperate New Names with New line</label>
+      <textarea rows="10" cols="10" class="form-control mb-3 mt-2" name="wheel-names" placeholder="Names" type="text" id="names"></textarea>
       <button type="submit" class="btn btn-primary">Push</button>
     </div>
   </form>
@@ -161,6 +162,11 @@
       <button type="submit" class="btn btn-primary">Flush</button>
     </div>
   </form>
+  <br>
+  <br>
+  <br>
+
+  <a style="padding-left: 120px;" href="/wheel"><button class="btn btn-success">GO TO WHEEL</button></a>
 </body>
 
 </html>
