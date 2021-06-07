@@ -10,7 +10,6 @@ Course work:
     Talha
     Ana Jessica
     Ishita
-    Talha
 
 Source:
     
