@@ -15,7 +15,7 @@
         text {
             font-family: 'Prompt', sans-serif;
             font-weight: bold;
-            font-size: 25px;
+            font-size: 23px;
             pointer-events: none;
         }
 
@@ -23,8 +23,8 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            top: 19.5rem;
-            left: 41rem;
+            top:1.5rem;
+            left: 21rem;
         }
 
         #question {
@@ -42,7 +42,8 @@
             position: absolute;
             padding: 0;
             margin: 0;
-            top: 50%;
+            top: 25%;
+            margin-right: 20rem;
             -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
         }
@@ -54,6 +55,8 @@
             background: rgb(241, 241, 241);
             height: 100%;
             width: 100%;
+            overflow-y: hidden;
+            overflow-x: scroll;
         }
 
         .ball {
@@ -69,13 +72,13 @@
             justify-content: center;
             align-items: center;
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 900px;
+            height: 900px;
             border-radius: 50%;
             background: goldenrod;
             box-shadow: 0 0 30px rgb(144,60,21);
-            top: 20rem;
-            left: 40rem;
+            top: 2rem;
+            left: 20rem;
         }
 
         .ml9 {
@@ -121,12 +124,11 @@
 
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-    <h1 class="ml9">
+    <!-- <h1 class="ml9"  style="margin-top:-2rem;">
         <span class="text-wrapper">
             <span class="letters"> SPIN WHEEL !!</span>
         </span>
-    </h1>
-
+    </h1> -->
     <div>
         <input type="hidden" id="users" name="users" value="{{user_str}}" />
     </div>
@@ -163,8 +165,8 @@
                     bottom: 0,
                     left: 10
                 },
-                w = 600 - padding.left - padding.right,
-                h = 600 - padding.top - padding.bottom,
+                w = 900 - padding.left - padding.right,
+                h = 900 - padding.top - padding.bottom,
                 r = Math.min(w, h) / 2,
                 rotation = 0,
                 oldrotation = 0,
@@ -323,7 +325,7 @@
             // Some random colors
             const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
 
-            const numBalls = 150;
+            const numBalls = 50;
             const balls = [];
 
             for (let i = 0; i < numBalls; i++) {
