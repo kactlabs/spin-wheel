@@ -2,7 +2,7 @@
     "user_data": [
         {
             "label": "Ishitha",
-            "value": 1,
+            "value": 10,
             "question": "Ishitha"
         },
         {
@@ -17,32 +17,32 @@
         },
         {
             "label": "Vedha",
-            "value": 4,
+            "value": 3,
             "question": "Vedha"
         },
         {
             "label": "Sharon",
-            "value": 5,
+            "value": 2,
             "question": "Sharon"
         },
         {
             "label": "Bhairavi",
-            "value": 6,
+            "value": 0,
             "question": "Bhairavi"
         },
         {
             "label": "Talha",
-            "value": 7,
+            "value": 2,
             "question": "Talha"
         },
         {
             "label": "Gokul",
-            "value": 8,
+            "value": 3,
             "question": "Gokul"
         },
         {
             "label": "Praabindh",
-            "value": 9,
+            "value": 2,
             "question": "Praabindh"
         },
         {
