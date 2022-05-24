@@ -1,3 +1,19 @@
+
+'''
+Created on 
+    
+
+Course work: get random with weightage
+    
+
+@author: 
+   Nagul
+
+Source:
+    
+'''
+
+
 import random
 import json
 
@@ -28,8 +44,13 @@ def read_json():
 
 # names = ["nagul", "Sudhir", "sivaram", "roughit", "elakiya"]
 # probability = [10, 2, 4, 0 ,5]
-names,probability = read_json()
-wh = tuple(probability)
-for i in range(10):
-    item = random.choices(names,weights= wh, k=1)
-    print("Iteration:", i, "Weighted Random choice is", item[0])
+def startpy():
+    names,probability = read_json()
+    wh = tuple(probability)
+    for i in range(10):
+        item = random.choices(names,weights= wh, k=1)
+        print("Iteration:", i, "Weighted Random choice is", item[0])
+
+
+if __name__== "__main__":
+    startpy()
