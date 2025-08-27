@@ -52,8 +52,8 @@ def home():
 
 @app.route('/wheel', methods = ['GET', 'POST'])
 def hello():
-    json = get_json('data.json')
-    data = json["user_data"]
+    json_data = get_json()
+    data = json_data["user_data"]
     return render_template('index.html', values=data)
 
 
