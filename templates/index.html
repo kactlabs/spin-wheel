@@ -23,8 +23,14 @@
             position: absolute;
             width: 500px;
             height: 500px;
-            top: 19.5rem;
-            left: 41rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #wheel-border {
+            width: 500px;
+            height: 500px;
         }
 
         #question {
@@ -65,17 +71,7 @@
 
 
         #wheel-border {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: goldenrod;
-            box-shadow: 0 0 30px rgb(144,60,21);
-            top: 20rem;
-            left: 40rem;
+            display: none;
         }
 
         .ml9 {
@@ -123,7 +119,7 @@
 
     <h1 class="ml9">
         <span class="text-wrapper">
-            <span class="letters"> SPIN WHEEL !!</span>
+            <span class="letters"></span>
         </span>
     </h1>
 
@@ -218,6 +214,7 @@
                     return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius - 10) + ")";
                 })
                 .attr("text-anchor", "end")
+                .style("fill", "white") /* MODIFIED: Set text color to white */
                 .text(function (d, i) {
                     return data[i].label;
                 });
@@ -323,15 +320,16 @@
             // Some random colors
             const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
 
-            const numBalls = 150;
+            const numBalls = 50; /* Reduced number of balls */
             const balls = [];
 
             for (let i = 0; i < numBalls; i++) {
                 let ball = document.createElement("div");
                 ball.classList.add("ball");
                 ball.style.background = colors[Math.floor(Math.random() * colors.length)];
-                ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
-                ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+                /* Confine the balls to a central area */
+                ball.style.left = `${50 - 25 + Math.floor(Math.random() * 50)}vw`; /* 25vw to 75vw */
+                ball.style.top = `${50 - 25 + Math.floor(Math.random() * 50)}vh`; /* 25vh to 75vh */
                 ball.style.transform = `scale(${Math.random()})`;
                 ball.style.width = `${Math.random()}em`;
                 ball.style.height = ball.style.width;
