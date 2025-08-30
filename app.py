@@ -15,18 +15,15 @@ Source:
 '''
 
 # Import necessary modules
-from fastapi import FastAPI, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
+from flask import Flask, request, render_template
 import json
 
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")
+app = Flask(__name__)
 USERS_JSONPATH = "data.json"
 
-@app.get('/', response_class=HTMLResponse)
-def home(request: Request):
-    return templates.TemplateResponse('front.html', {"request": request})
+@app.route('/')
+def home():
+    return render_template('front.html')
 
 
 # @app.route("/wheel", methods = ['GET', 'POST'])
@@ -53,27 +50,31 @@ def home(request: Request):
 #     return render_template("index.html", user_str = user_string)
 
 
-@app.get('/wheel', response_class=HTMLResponse)
-@app.post('/wheel', response_class=HTMLResponse)
-def hello(request: Request):
+@app.route('/wheel', methods = ['GET', 'POST'])
+def hello():
     json_data = get_json()
     data = json_data["user_data"]
-    return templates.TemplateResponse('index.html', {"request": request, "values": data})
+    return render_template('index.html', values=data)
 
 
-@app.get("/admin", response_class=HTMLResponse)
-def admin(request: Request):
-    return templates.TemplateResponse("admin.html", {"request": request})
+@app.route("/admin", methods = ['GET'])
+def admin():
+    
+    return render_template("admin.html")
 
-@app.get('/admin/post')
-@app.post('/admin/post')
+@app.route('/admin/post',methods=['GET','POST'])
 def get_json():
-    with open(USERS_JSONPATH) as json_file:
-        json_data = json.load(json_file)
+
+    json_file = open(USERS_JSONPATH)
+    json_data = json.load(json_file)
+    #print(json_data)
+
     return json_data
 
 # return render_template('admin.html')
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=5006)
+if __name__== "__main__":
+    app.run(
+        port = 5006,
+        debug = True
+    )

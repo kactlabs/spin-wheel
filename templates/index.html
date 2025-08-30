@@ -132,27 +132,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
-        // A $( document ).ready() block.
-        // $( document ).ready(function() {
-        //     console.log( "ready!" );
-
-        //     var users = $('#users').val().split(",");
-
-        //     alert(users);
-
-        //     var user_data = [];
-        //     for (var i = 0; i < users.length; i++){
-        //         alert(users[i]);
-
-        //         user_dict = {
-        //             "label": users[i],
-        //             "value": 1,
-        //             "question": users[i]
-        //         }
-
-        //         user_data.push(user_dict);
-        //     }
-
             var padding = {
                     top: 20,
                     right: 40,
@@ -167,11 +146,7 @@
                 picked = 100000,
                 oldpick = [],
                 color = d3.scale.category20(); //category20c()
-            //randomNumbers = getRandomNumbers();
-            //http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
             
-            // var data = user_data;
-
             var data = JSON.parse('{{values|tojson}}')
 
 
@@ -301,22 +276,6 @@
                 };
             }
 
-
-            function getRandomNumbers() {
-                var array = new Uint16Array(1000);
-                var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
-                if (window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function") {
-                    window.crypto.getRandomValues(array);
-                    console.log("works");
-                } else {
-                    //no support for crypto, get crappy random numbers
-                    for (var i = 0; i < 1000; i++) {
-                        array[i] = Math.floor(Math.random() * 100000) + 1;
-                    }
-                }
-                return array;
-            }
-
             // Some random colors
             const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
 
@@ -362,9 +321,6 @@
                 );
             });
 
-
-
-
             // Wrap every letter in a span
             var textWrapper = document.querySelector('.ml9 .letters');
             textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -385,7 +341,6 @@
                     easing: "easeOutExpo",
                     delay: 1000
                 });
-        // });
     </script>
 </body>
 
