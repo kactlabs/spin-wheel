@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+  }
+  
+  body{
+    font-family: Open Sans;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: rgb(140, 217, 236);
+    background: linear-gradient(90deg, rgb(140, 217, 236) 0%, rgb(213, 184, 240) 52%, rgba(140, 217, 236) 100%);
+    background-size: cover;
+  }
+  
+  .mainbox{
+    position: relative;
+    width: 500px;
+    height: 500px;
+  }
+  .mainbox:after{
+    position: absolute;
+    content: '';
+    width: 32px;
+    height: 32px;
+    background: url('arrow-left.png') no-repeat;
+    background-size: 32px;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .box{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    overflow: hidden;
+    transition: all ease 5s;
+  }
+  
+  .segment {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    left: 50%;
+    top: 0;
+    transform: rotate(calc(var(--i) * 45deg)) skewY(-45deg);
+  }
+  
+  .segment b {
+    position: absolute;
+    left: -100%;
+    bottom: 0;
+    transform: skewY(45deg) rotate(90deg);
+    transform-origin: bottom right;
+    color: #fff;
+    font-size: 24px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 70px; /* Adjust as needed for vertical centering */
+    padding-left: 50%; /* Adjust to move text further from center */
+  }
+  
+  .spin{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    background-color: #808bec;
+    color: #000;
+    box-shadow: 0 5px 20px #000;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10; /* Ensure spin button is above segments */
+  }
+  .spin:active{
+    width: 70px;
+    height: 70px;
+    font-size: 20px;
+  }
+  
+  .mainbox.animate:after{
+    animation: animateArrow 0.7s ease infinite;
+  }
+  @keyframes animateArrow{
+    50%{
+      right: -40px;
+    }
+}
